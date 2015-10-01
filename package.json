@@ -4,8 +4,16 @@
   "version": "0.0.1",
   "homepage": "http://github.com/contra/object-lens",
   "repository": "git://github.com/contra/object-lens.git",
-  "author": "Contra contra@maricopa.edu (http://contra.io)",
-  "dependencies": {},
+  "author": "Contra <contra@maricopa.edu> (http://contra.io)",
+  "dependencies": {
+    "lodash.includes": "^3.1.3",
+    "lodash.isarray": "^3.0.4",
+    "lodash.isobject": "^3.0.2",
+    "lodash.map": "^3.1.4",
+    "lodash.partial": "^3.1.1",
+    "lodash.reduce": "^3.1.2",
+    "lodash.some": "^3.2.3"
+  },
   "devDependencies": {
     "istanbul-coveralls": "^1.0.1",
     "jshint": "^2.5.11",
@@ -16,7 +24,7 @@
   },
   "main": "./index.js",
   "scripts": {
-    "lint": "jshint index.js lib --exclude node_modules --config .jshintrc --reporter node_modules/jshint-stylish/index.js",
+    "lint": "jshint index.js --exclude node_modules --config .jshintrc --reporter node_modules/jshint-stylish/index.js",
     "test": "npm run-script lint && mochify --recursive --reporter spec",
     "coveralls": "mochify --recursive --plugin [ mochify-istanbul --exclude '**/+(test|node_modules)/**/*' --report lcov --dir ./coverage ] && istanbul-coveralls"
   },
