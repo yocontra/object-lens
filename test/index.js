@@ -4,6 +4,18 @@ var should = require('should');
 var lens = require('../');
 
 describe('object-lens()', function() {
+  it('should ignore fields with no lenses specified', function(done) {
+    lens({
+      name: ['public', 'admin']
+    }, ['public'], {
+      name: 'Todd',
+      lastName: 'Johnson'
+    }).should.eql({
+      name: 'Todd'
+    });
+    done();
+  });
+
   it('should filter a flat object with one role', function(done) {
     lens({
       name: ['public', 'admin'],
@@ -62,6 +74,22 @@ describe('object-lens()', function() {
       name: {
         first: 'Todd'
       },
+      age: 25
+    });
+    done();
+  });
+
+  it('should filter a nested object with one role', function(done) {
+    lens({
+      name: ['admin'],
+      age: ['public', 'admin']
+    }, ['public'], {
+      name: {
+        first: 'Todd',
+        last: 'Johnson'
+      },
+      age: 25
+    }).should.eql({
       age: 25
     });
     done();
