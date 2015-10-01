@@ -1,7 +1,7 @@
 {
   "name": "object-lens",
   "description": "ACL-like filtering of objects",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "homepage": "http://github.com/contra/object-lens",
   "repository": "git://github.com/contra/object-lens.git",
   "author": "Contra <contra@maricopa.edu> (http://contra.io)",
