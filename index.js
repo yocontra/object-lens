@@ -17,10 +17,13 @@ function filterWithLens(schema, lenses, data){
 
   return reduce(data, function(o, v, k){
     var allowed = schema[k];
-    if (isArray(allowed) &&
-      some(lenses, partial(includes, allowed))) {
+    var validRules = isArray(allowed);
+    var needsNesting = !validRules && isObject(allowed);
+
+    if (validRules && some(lenses, partial(includes, allowed))) {
       o[k] = v;
-    } else if (isObject(allowed) && isObject(v)) {
+    }
+    if (needsNesting && isObject(v)) {
       o[k] = filterWithLens(allowed, lenses, v);
     }
     return o;
